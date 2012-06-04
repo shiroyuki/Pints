@@ -1,0 +1,62 @@
+body {
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/***** Header *****/
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 213px;
+    background: #eee;
+}
+
+header .logo {
+    display: inline-block;
+    margin: 5px;
+    padding: 5px;
+    vertical-align: middle;
+}
+
+header .logo img {
+    display: block;
+    height: 40px;
+}
+
+header .user {
+    cursor: default;
+    border-top: 2px solid transparent;
+}
+
+header .user h1 {
+    cursor: default;
+    padding: 10px 20px;
+    margin: 0;
+    font-size: 16px;
+}
+
+header .user .cmds li a {
+    display: block;
+    padding: 7px 20px;
+    color: #666;
+    font-size: 14px;
+}
+
+header .user .cmds li a:hover,
+header .user .cmds li a:focus {
+    color: #fff;
+    background-color: #333;
+}
+
+header .user .cmds li a.sign-out:hover,
+header .user .cmds li a.sign-out:focus {
+    border-color: #cc3333;
+}
+
+header .user:hover {
+    border-top: 2px solid #A7DBD8;
+}
+
+/***** Viewport *****/

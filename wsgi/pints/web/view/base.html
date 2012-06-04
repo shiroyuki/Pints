@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+{% macro svg(src, width=None, height=None, id=None, classes=None, alt=None) -%}
+    <img {% if alt %}alt="{{ alt }}"{% endif %}
+        type="image/svg+xml"
+        src="{{ src }}"
+        {% if width %}width="{{ width }}"{% endif %}
+        {% if height %}height="{{ height }}"{% endif %}
+        {% if id %}id="{{ id }}"{% endif %}
+        {% if classes %}class="{{ classes }}"{% endif %}
+    />
+{%- endmacro %}
+{% macro checkbox(name, checked, id=None, classes=None, label=None) -%}
+    {% set id = id or name %}
+    <label for="{{ id }}">
+        <input type="checkbox"
+            id="{{ id }}"
+            name="{{ name }}"
+            {% if checked %}checked{% endif %}
+        />
+        {% if label %}{{ label }}{% endif %}
+    </label>
+{%- endmacro %}
+<head>
+    <title>{% block title %}Welcome{% endblock %} - {{ app_name }}</title>
+    <meta charset="utf-8"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="viewport" content = "width = device-width, initial-scale = 1, user-scalable = no" /> 
+    <link rel="stylesheet" href="/3p/fz/stylesheets/app.css"/>
+    <link rel="stylesheet" href="/3p/fz/stylesheets/foundation.css"/>
+    <link rel="stylesheet" href="/css/base.css"/>
+    <link rel="stylesheet" href="/css/component.css"/>
+    <link rel="stylesheet" href="/css/layout.css"/>
+    {% block stylesheets %}{% endblock %}
+</head>
+<body data-authentication="{{ authenticated and "yes" or "no" }}">
+    {% block body %}{% endblock %}
+    <script src="/js/lib/jquery.js"></script>
+    <script src="/js/lib/underscore.js"></script>
+    <script src="/3p/fz/javascripts/app.js"></script>
+    <script src="/3p/fz/javascripts/foundation.js"></script>
+    <script src="/3p/fz/javascripts/modernizr.foundation.js"></script>
+    <script src="/js/core/core.js"></script>
+    <script src="/js/core/component.js"></script>
+    <script src="/js/core/event.js"></script>
+    <script src="/js/core/selector.js"></script>
+    <script src="/js/core/router.js"></script>
+    <script src="/js/core/app.js"></script>
+    {% block javascripts %}{% endblock %}
+    <noscript>
+        <div data-primary="Come on!" data-secondary="Enable the JavaScript."></div>
+    </noscript>
+</body>
+</html>

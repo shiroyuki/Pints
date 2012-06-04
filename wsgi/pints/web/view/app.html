@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="/css/app.css"/>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="/js/model.js"></script>
+    <script type="text/javascript" src="/js/controller.js"></script>
+    <script type="text/javascript" src="/js/ui.js"></script>
+    <script type="text/javascript" src="/js/app.js"></script>
+{% endblock %}
+
+{% block body %}
+    <header>
+        <a class="logo" title="{{ app_name }}"><img src="/image/logo.png" alt="{{ app_name }}"/></a>
+        <section class="user">
+            <h1 class="name" data-alias="">
+                <span>{{ current_user.firstname }}</span>
+                <span>{{ current_user.lastname }}</span>
+            </h1>
+            <menu class="cmds">
+                <li><a href="/logout" title="Sign out">Sign out</a></li>
+            </menu>
+        </section>
+    </header>
+    <section class="primary">
+        <article class="projects">
+            <h1>Projects</h1>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Project Name</th>
+                        <th>Owner</th>
+                        <th>Due</th>
+                        <th>Last Updated</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </article>
+    </section>
+    <section class="prompts theme-dark disabled">
+        <a class="close">&times;</a>
+        <form action="#projects" method="post" data-entity="Project" data-primary="name">
+            <h1>Create a new project</h1>
+            <p>
+                <input type="text" name="name" placeholder="The name of the project?" />
+            </p>
+            <p>
+                <button class="button green" type="submit">Create</button>
+            </p>
+        </form>
+        <form action="#reminders" method="post" data-entity="Reminder" data-primary="summary">
+            <h1>Create a new reminder</h1>
+            <p>
+                <input type="text" name="summary" placeholder="What do you want to be reminded?" />
+            </p>
+            <p>
+                <button class="button green" type="submit">Create</button>
+            </p>
+        </form>
+    </section>
+    <aside>
+        <menu>
+            <li><a class="create"><img src="/image/ss/icon-plus.png"/></a></li>
+        </menu>
+    </aside>
+{% endblock %}

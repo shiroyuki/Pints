@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<application>
+    <server>
+        <secret></secret> <!-- should be changed on deployment. -->
+        <error>pints.web.controller.ErrorController</error>
+    </server>
+    <routes>
+        <controller class="pints.web.controller.IndexController" pattern="/"/>
+        <controller class="pints.web.controller.SessionController" pattern="/(login|logout|session)"/>
+		<controller class="pints.core.interface.ProjectInterface" pattern="/api/v1/projects/(\d*)"/>
+		<controller class="pints.core.interface.RemainderInterface" pattern="/api/v1/reminders/(\d*)"/>
+    </routes>
+</application>

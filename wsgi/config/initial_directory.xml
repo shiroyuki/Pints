@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<directory>
+    <!--
+        Initial directory data only used during setup.
+    -->
+    <groups>
+        <!--
+            Group 'root' is omitted as the default group for system administrators.
+            
+            This group is specially designated as a system-wide administrators wielding
+            the authorization higher than a group master (meaning possessing the clearance
+            level to revoke the group-master status.
+
+            The staffs of this group is equivalent to other groups' masters.
+
+            The masters of this group holds authorization and privilege higher than group masters.
+        -->
+        <!-- Group 'public' is omitted as the default group for all users. -->
+        <group alias="dev">Developer</group>
+    </groups>
+    <users>
+        <!--
+            One user can participate one or more groups, defined by group alias and seperated by a space.
+            Any users listed here are granted with the staff privilege by default. To manually specify
+            the management level of a user in the particular group, add ':mgnlevel'. For instance:
+
+            root:master -> the master of the group 'root'.
+
+            Please note the root group is special and please pay attention to 
+        -->
+        <user alias="root" group="root:master">
+            <email>root@shiroyuki.com</email>
+            <firstname>Root</firstname>
+            <lastname>(Admin)</lastname>
+            <password>genius</password>
+        </user>
+        <user alias="jnopporn" group="root public:master dev:master">
+            <email>jnopporn@shiroyuki.com</email>
+            <firstname>Juti</firstname>
+            <lastname>Noppornpitak</lastname>
+            <password>genius</password>
+        </user>
+        <user alias="ghost" group="public">
+            <email>ghost@example.com</email>
+            <firstname>John</firstname>
+            <lastname>Smith</lastname>
+            <password>stupid</password>
+        </user>
+    </users>
+</directory>

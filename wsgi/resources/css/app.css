@@ -1,0 +1,107 @@
+/***** [Primary Section] *****/
+section.primary {
+    margin-left: 213px;
+    margin-right: 44px;
+}
+
+section.primary h1 {
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+/***** [Projects] *****/
+article.projects {
+    padding: 20px;
+}
+
+article.projects .data-table {
+    width: 100%;
+    border:none;
+}
+
+article.projects .data-table thead {
+    background-color: transparent;
+}
+
+article.projects .data-table tr th {
+    font-size: 12px;
+    font-weight: 300;
+    border-bottom: 1px solid #ddd;
+    color: #999;
+}
+
+article.projects .data-table label {
+    margin: 0;
+}
+
+/***** [App Menu] *****/
+aside {
+    -webkit-transition: all ease 200ms 150ms;
+    position: fixed;
+    top: 0;
+    right: -44px;
+    bottom: 0;
+    width: 44px;
+    background-color: #333;
+}
+
+aside menu li a {
+    display: block;
+    padding: 10px;
+}
+
+aside menu li a:hover {
+    background-color: black;
+}
+
+aside menu li a img {
+    display: block;
+    width: 24px;
+}
+
+/***** [Prompts] *****/
+
+section.prompts {
+    -webkit-transition: all ease 200ms 100ms;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 640px;
+    background-color: #333;
+    color: #ccc;
+}
+
+section.prompts h1 {
+    color: #fff;
+    font-weight: 300;
+    font-size: 20px;
+}
+
+section.prompts form {
+    padding: 20px;
+}
+
+section.prompts form p {
+    margin-top: 10px;
+}
+
+section.prompts form input {
+    width: 99%;
+}
+
+section.prompts > .close {
+    font-size: 24px;
+    font-weight: 700;
+    float: right;
+    padding: 0 10px;
+    color: #ff6600;
+}
+
+section.prompts.disabled {
+    right: -640px;
+}
+
+section.prompts.disabled + aside {
+    right: 0px;
+}

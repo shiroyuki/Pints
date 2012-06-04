@@ -1,0 +1,95 @@
+/**
+ * Base Stylesheet
+ *
+ * Project Pints
+ *
+ * © Juti Noppornpitak
+ */
+
+*, li {
+    outline: none;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Helvetica Neue', 'Arial', sans-serif;
+    line-height: normal;
+}
+
+a {
+    cursor: pointer;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    font-family: 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: 200;
+    letter-spacing: 1px;
+    background-color: transparent;
+    color: #666;
+    border: none;
+    border-bottom: 2px solid #ddd;
+    padding: 5px 2px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    color: #000;
+    border-bottom-color: #A7DBD8 !important;
+}
+
+button, .button {
+    font-family: 'Helvetica Neue', 'Arial', sans-serif;
+}
+
+noscript {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 50px;
+    background-color: rgba(238, 238, 238, 0.95);
+}
+
+noscript div:before {
+    font-weight: 700;
+    font-size: 48px;
+    margin-right: 10px;
+    content: attr(data-primary);
+    color: #cc0000;
+}
+
+noscript div:after {
+    font-size: 24px;
+    content: attr(data-secondary);
+}
+
+menu {
+    list-style: none;
+}
+
+.reset ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.theme-dark {
+    color: #ccc;
+}
+
+.theme-dark h1, .theme-dark h2, .theme-dark h3, .theme-dark h4 {
+    color: #fff;
+}
+
+.theme-dark input[type="text"],
+.theme-dark input[type="email"],
+.theme-dark input[type="password"] {
+    color: #ccc;
+    border-bottom-color: #444;
+}

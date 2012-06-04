@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="/css/session.css" />
+{% endblock %}
+
+{% block body %}
+<form id="login-form" action="/session" method="post" class="form-inline">
+    <h1>
+        {{ svg("/3p/np/image/noun_project_31.svg", 200, 200, alt='login') }}
+    </h1>
+    <p>
+        <label for="login-form-key">E-mail Address</label>
+        <input id="login-form-key" name="key" type="email" placeholder="E-mail Address" required />
+    </p>
+    <p>
+        <label for="login-form-password">Password</label>
+        <input id="login-form-password" name="password" type="password" placeholder="Password" required />
+    </p>
+    <p id="login-form-commands">
+        <button type="submit" class="button blue">Log in</button>
+    </p>
+</form>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+$(document).ready(function() {
+    var md = widget.modalDialog;
+    
+    // Register the template for the error
+    widget.template('login-error', [
+        '<h1><% if (typeof title !== "undefined") { %><%= title %><% } else { %>Attention<% } %></h1>',
+        '<p><%= message %></p>'
+    ].join(''));
+    
+    //
+    md.showTemplate('login-error', {
+        message: 'こんにちは！',
+        title:   'Hi there!'
+    });
+    
+    $('#login-form').submit(function(e) {
+        e.preventDefault();
+        
+        var form   = $(this),
+            params = {};
+        
+        form.find('input[name]').each(function(index) {
+            var input = $(this);
+            
+            params[input.attr('name')] = input.val();
+        });
+        
+        $.ajax(form.attr('action'), {
+            type: form.attr('method'),
+            data: params,
+            success: function(r) {
+                md.showTemplate('login-error', {
+                    message: 'Welcome!'
+                });
+                
+                setTimeout(function() {
+                    window.location = '/';
+                }, 2000);
+            },
+            error: function(r) {
+                var _message = 'Sorry. Something is wrong.';
+                
+                switch (r.status) {
+                case 400:
+                    _message = 'Er... forgot something?';
+                    break;
+                case 401:
+                    _message = 'We could not recognize you. Can you try again?';
+                }
+                
+                md.showTemplate('login-error', {
+                    message: _message
+                });
+            }
+        });
+    });
+    
+    setTimeout(function() {
+        md.hide();
+    }, 1000);
+});
+</script>
+{% endblock %}

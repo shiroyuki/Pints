@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<application>
+    <include src="base.xml"/> <!-- undocumented -->
+    <server>
+        <debug>true</debug>
+        <port>8000</port>
+    </server>
+    <routes>
+        <resource location="../../resources/favicon.ico" pattern="/favicon.ico" cache="false"/>
+        <resource location="resources/css" pattern="/css(/.*)" cache="false"/>
+        <resource location="resources/js" pattern="/js(/.*)" cache="false"/>
+		<resource location="../resources/3p/foundation" pattern="/3p/fz/(.*)" cache="true"/>
+		<resource location="../resources/3p/noun_project" pattern="/3p/np/image/(.*)" cache="false"/>
+        <resource location="../resources/3p/glyphicons" pattern="/3p/g/image/(.*)" cache="false"/>
+		<resource location="resources/image" pattern="/image/(.*)" cache="false"/>
+    </routes>
+    <service>service.xml</service>
+</application>

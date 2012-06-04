@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<imagination>
+    <entity id="session" class="tori.session.DbSession">
+		<param name="url">sqlite:///sessions.db</param>
+	</entity>
+    <entity id="db" class="tori.service.rdb.RelationalDatabaseService">
+        <param name="url">sqlite:///app.db</param>
+    </entity>
+	<!-- Security: Directory Service -->
+    <entity id="security.db.group_directory" class="tori.service.rdb.EntityService">
+        <param name="db" type="entity">db</param>
+        <param name="kind" type="class">pints.security.model.Group</param>
+    </entity>
+    <entity id="security.db.user_directory" class="tori.service.rdb.EntityService">
+        <param name="db" type="entity">db</param>
+        <param name="kind" type="class">pints.security.model.User</param>
+    </entity>
+	<!-- Security: Access Control -->
+    <entity id="security.access_control" class="pints.security.service.AccessControl">
+        <param name="user_directory" type="entity">security.db.user_directory</param>
+    </entity>
+    <entity id="registration" class="pints.security.service.Registration">
+        <param name="db" type="entity">db</param>
+    </entity>
+	<!-- Data Transformer -->
+	<entity id="data_transformer" class="pints.foundation.data_transformer.DataTransformer"/>
+	<!-- Data -->
+    <entity id="projects" class="tori.service.rdb.EntityService">
+        <param name="db" type="entity">db</param>
+        <param name="kind" type="class">pints.core.model.Project</param>
+    </entity>
+    <entity id="reminders" class="tori.service.rdb.EntityService">
+        <param name="db" type="entity">db</param>
+        <param name="kind" type="class">pints.core.model.Reminder</param>
+    </entity>
+    <!--
+    <entity id="css-compressor" class="tori.service.data.compressor.CSSCompressor" tags="resource-service-plugin"/>
+    -->
+</imagination>

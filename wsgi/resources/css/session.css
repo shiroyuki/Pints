@@ -1,0 +1,34 @@
+.viewport {
+    padding: 50px 200px;
+}
+
+#login-form {
+    width: 320px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#login-form h1 {
+    height: 250px;
+}
+
+#login-form label {
+    display: none;
+}
+
+#login-form input[type="email"],
+#login-form input[type="password"] {
+    width: 213px;
+}
+
+#login-form-commands {
+    margin-top: 20px;
+}
+
+[data-widget="modalDialog"].login-error {
+    text-transform: uppercase;
+}
+
+[data-widget="modalDialog"].login-error h1 {
+    font-size: 20px;
+}
