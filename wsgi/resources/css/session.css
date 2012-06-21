@@ -3,13 +3,13 @@
 }
 
 #login-form {
+    padding-top: 100px;
     width: 320px;
     margin: 0 auto;
     text-align: center;
 }
 
 #login-form h1 {
-    height: 250px;
 }
 
 #login-form label {

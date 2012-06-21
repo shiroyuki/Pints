@@ -7,7 +7,8 @@
     <routes>
         <controller class="pints.web.controller.IndexController" pattern="/"/>
         <controller class="pints.web.controller.SessionController" pattern="/(login|logout|session)"/>
-		<controller class="pints.core.interface.ProjectInterface" pattern="/api/v1/projects/(\d*)"/>
-		<controller class="pints.core.interface.RemainderInterface" pattern="/api/v1/reminders/(\d*)"/>
+        <controller class="pints.core.interface.ProjectInterface" pattern="/api/v1/projects/(\d*)"/>
+        <controller class="pints.core.interface.ReminderInterface" pattern="/api/v1/reminders/(\d*)"/>
+        <controller class="pints.core.interface.ReminderConnectionInterface" pattern="/api/v1/reminders/(\d+)/([^\s]+)/(\d*)"/>
     </routes>
 </application>

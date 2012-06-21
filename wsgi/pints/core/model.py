@@ -10,8 +10,8 @@ from tori.rdb       import Entity
 from pints.security.model import User
 
 jointed_table_project_reminder = Table('project_reminder', Entity.metadata,
-    Column('project_id', Integer, ForeignKey('groups.id')),
-    Column('reminder_id', Integer, ForeignKey('users.id'))
+    Column('project_id', Integer, ForeignKey('projects.id')),
+    Column('reminder_id', Integer, ForeignKey('reminders.id'))
 )
 
 class SingleKeyModel(object):
@@ -29,21 +29,20 @@ class Project(Entity, SingleKeyModel):
     name       = Column(String(80), index=True)
     codename   = Column(String(80), index=True)
     milestones = None
-    dropbox    = None # the list of reminders without milestones
-    
+    reminders  = relationship('Reminder', secondary=jointed_table_project_reminder, backref='projects')
+
     # Many projects to one owner (user)
     owner_id = Column(Integer, ForeignKey('users.id'))
     owner    = relationship('User')
 
 class Reminder(Entity, SingleKeyModel):
     __tablename__ = 'reminders'
-    
+
     assignees  = []
-    responders = []
     summary    = Column(String(80), index=True)
     alias      = Column(String(80), index=True)
-    
-    # Many projects to one owner (user)
+
+    # Many reminders to one owner (user)
     owner_id = Column(Integer, ForeignKey('users.id'))
     owner    = relationship('User')
 
@@ -52,7 +51,7 @@ def post_commit_listener(entity, value, oldvalue, initiator):
         entity.updated = datetime.utcnow()
     else:
         entity.updated = None
-    
+
     return value
 
 event.listen(Project.complete, 'set', post_commit_listener, retval=True)
